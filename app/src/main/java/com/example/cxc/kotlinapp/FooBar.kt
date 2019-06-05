@@ -29,23 +29,17 @@ fun String.extensionFunc(): String {
     return "helloWorld"
 }
 
-abstract class Shape(shape: String) {
-    var shape: String = shape
+abstract class Shape(var shape: String) {
 
     abstract fun getPerimeter(): Int
 }
 
-class Rectangle(shape: String, width: Int, height: Int) : Shape(shape) {
-    var width = width
-    var height: Int = height
+class Rectangle(shape: String, var width: Int, var height: Int) : Shape(shape) {
 
     override fun getPerimeter(): Int = 2 * (width + height)
 }
 
-class Triangle(shape: String, length1: Int, length2: Int, length3: Int) : Shape(shape) {
-    var length1 = length1
-    var length2 = length2
-    var length3 = length3
+class Triangle(shape: String, var length1: Int, var length2: Int, var length3: Int) : Shape(shape) {
 
     override fun getPerimeter(): Int = length1 + length2 + length3
 }

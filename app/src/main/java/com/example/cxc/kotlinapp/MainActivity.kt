@@ -65,6 +65,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         test()
 
-        log(TAG, "-->extensionFunc:" + ("xxx".extensionFunc()))
+        val extensionFunc = "xxx".extensionFunc().also(::println)
+
+        log(TAG, "-->extensionFunc:$extensionFunc")
     }
 }
