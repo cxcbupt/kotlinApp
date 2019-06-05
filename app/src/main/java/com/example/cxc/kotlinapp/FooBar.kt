@@ -18,8 +18,8 @@ abstract class Shape(shape: String) {
 }
 
 class Rectangle(shape: String, width: Int, height: Int) : Shape(shape) {
-    private var width = 0
-    private var height: Int = 0
+    var width = 0
+    var height: Int = 0
 
     init {
         this.width = width
@@ -30,9 +30,9 @@ class Rectangle(shape: String, width: Int, height: Int) : Shape(shape) {
 }
 
 class Triangle(shape: String, length1: Int, length2: Int, length3: Int) : Shape(shape) {
-    private var length1: Int = 0
-    private var length2: Int = 0
-    private var length3: Int = 0
+    var length1: Int = 0
+    var length2: Int = 0
+    var length3: Int = 0
 
     init {
         this.length1 = length1
