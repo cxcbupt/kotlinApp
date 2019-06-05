@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         log(TAG, "hello_tv clicked")
 
         var txt = hello_tv.text
-        log("CXC", "original text:$txt")
+        log(TAG, "original text:$txt")
 
         txt = "${txt}_HELLO_"
         hello_tv.text = txt
