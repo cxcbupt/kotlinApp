@@ -26,8 +26,15 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         hello_tv.text = txt
         log(TAG, "new text:$txt")
 
+        var shape: Shape? = Rectangle("rectangle", 2, 3)
+        log(TAG, "shape#perimeter:" + shape?.getPerimeter())
+        shape = null
+//        log(TAG, "shape#perimeter:" + (shape?.getPerimeter() ?: "null value"))
+        val perimeter = shape?.getPerimeter() ?: -1
+        log(TAG, "shape#perimeter:$perimeter")
 
-        var shape: Shape = Rectangle("rectangle", 2, 3)
+
+        shape = Rectangle("rectangle", 2, 3)
         log(
             TAG, "className=" + shape.javaClass.canonicalName
                     + ",shape:" + shape.shape
@@ -54,5 +61,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 log(TAG, "-->wrong shape type")
             }
         }
+
+
+        test()
+
+        log(TAG, "-->extensionFunc:" + ("xxx".extensionFunc()))
     }
 }
