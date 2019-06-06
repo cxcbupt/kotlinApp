@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         log(TAG, "shape#perimeter:$perimeter")
 
 
-        shape = Rectangle("rectangle", 2, 3)
+        shape = Rectangle(2, 3)
         log(
             TAG, "className=" + shape.javaClass.canonicalName
                     + ",shape:" + shape.shape
@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         )
         log(TAG, "shape is Triangle:" + (shape is Rectangle))
 
-        shape = Triangle("triangle", 1, 2, 2)
+        shape = Triangle(1, 2, 2)
         log(
             TAG, "className=" + shape.javaClass.canonicalName
                     + ",shape:" + shape.shape
@@ -68,5 +68,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         val extensionFunc = "xxx".extensionFunc().also(::println)
 
         log(TAG, "-->extensionFunc:$extensionFunc")
+
+        HelloJava.test()// kotlin call java
     }
 }
