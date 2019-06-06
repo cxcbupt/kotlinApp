@@ -51,24 +51,34 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         log(TAG, "shape is Triangle:" + (shape is Triangle))
 
+        shape = Square(8)
+        log(
+            TAG, "className=" + shape.javaClass.canonicalName
+                    + ",shape:" + shape.shape
+                    + ",perimeter=" + shape.getPerimeter()
+        )
+
         when (shape) {
             is Rectangle -> log(TAG, "-->width:" + shape.width + ",height:" + shape.height)
             is Triangle -> log(
                 TAG,
                 "-->length1:" + shape.length1 + ",length2:" + shape.length2 + ",length3:" + shape.length3
             )
+            is Square -> log(TAG, "-->width:" + shape.width + ",height:" + shape.height)
             else -> {
                 log(TAG, "-->wrong shape type")
             }
         }
 
+        var customShare = Custom("ccc", 21)
 
-        test()
+
+        /*test()
 
         val extensionFunc = "xxx".extensionFunc().also(::println)
 
         log(TAG, "-->extensionFunc:$extensionFunc")
 
-        HelloJava.test()// kotlin call java
+        HelloJava.test()// kotlin call java*/
     }
 }
