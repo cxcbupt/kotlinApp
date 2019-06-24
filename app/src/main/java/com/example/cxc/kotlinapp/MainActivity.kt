@@ -6,7 +6,9 @@ import android.view.View
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
-    val TAG: String = "MainActivity"
+    companion object {
+        const val TAG: String = "MainActivity"
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,44 +29,37 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         log(TAG, "new text:$txt")
 
         var shape: Shape? = Rectangle("rectangle", 2, 3)
-        log(TAG, "shape#perimeter:" + shape?.getPerimeter())
-        shape = null
-//        log(TAG, "shape#perimeter:" + (shape?.getPerimeter() ?: "null value"))
-        val perimeter = shape?.getPerimeter() ?: -1
-        log(TAG, "shape#perimeter:$perimeter")
+        log(
+            TAG, "shape:${shape?.shape}, perimeter = ${shape?.getPerimeter()}"
+        )
 
+        shape = null
+        log(
+            TAG, "shape:${shape?.shape}, perimeter = ${shape?.getPerimeter()}"
+        )
 
         shape = Rectangle(2, 3)
         log(
-            TAG, "className=" + shape.javaClass.canonicalName
-                    + ",shape:" + shape.shape
-                    + ",perimeter=" + shape.getPerimeter()
+            TAG, "className=${shape.javaClass.canonicalName},shape:${shape.shape}, perimeter = ${shape.getPerimeter()}"
         )
-        log(TAG, "shape is Triangle:" + (shape is Rectangle))
 
         shape = Triangle(1, 2, 2)
         log(
-            TAG, "className=" + shape.javaClass.canonicalName
-                    + ",shape:" + shape.shape
-                    + ",perimeter=" + shape.getPerimeter()
+            TAG, "className=${shape.javaClass.canonicalName},shape:${shape.shape}, perimeter = ${shape.getPerimeter()}"
         )
-
-        log(TAG, "shape is Triangle:" + (shape is Triangle))
 
         shape = Square(8)
         log(
-            TAG, "className=" + shape.javaClass.canonicalName
-                    + ",shape:" + shape.shape
-                    + ",perimeter=" + shape.getPerimeter()
+            TAG, "className=${shape.javaClass.canonicalName},shape:${shape.shape}, perimeter = ${shape.getPerimeter()}"
         )
 
         when (shape) {
-            is Rectangle -> log(TAG, "-->width:" + shape.width + ",height:" + shape.height)
+            is Rectangle -> log(TAG, "-->width:${shape.width},height:${shape.height}")
             is Triangle -> log(
                 TAG,
-                "-->length1:" + shape.length1 + ",length2:" + shape.length2 + ",length3:" + shape.length3
+                "-->length1:${shape.length1},length2:${shape.length2},length3:${shape.length3}"
             )
-            is Square -> log(TAG, "-->width:" + shape.width + ",height:" + shape.height)
+            is Square -> log(TAG, "-->width:${shape.width},height:${shape.height}")
             else -> {
                 log(TAG, "-->wrong shape type")
             }
