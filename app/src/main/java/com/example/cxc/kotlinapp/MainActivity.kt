@@ -2,10 +2,9 @@ package com.example.cxc.kotlinapp
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.view.View
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity(), View.OnClickListener {
+class MainActivity : AppCompatActivity() {
     companion object {
         const val TAG: String = "MainActivity"
     }
@@ -15,10 +14,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         setContentView(R.layout.activity_main)
         log(TAG, "hello kotlin !")
 
-        hello_tv.setOnClickListener(this)
+        hello_tv.setOnClickListener { onClick() }
     }
 
-    override fun onClick(v: View?) {
+    private fun onClick() {
         log(TAG, "hello_tv clicked")
 
         var txt = hello_tv.text
