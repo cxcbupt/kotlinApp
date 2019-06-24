@@ -28,43 +28,21 @@ class MainActivity : AppCompatActivity() {
         log(TAG, "new text:$txt")
 
         var shape: Shape? = Rectangle("rectangle", 2, 3)
-        log(
-            TAG, "shape:${shape?.shape}, perimeter = ${shape?.getPerimeter()}"
-        )
+        dumpMsg(shape)
 
         shape = null
-        log(
-            TAG, "shape:${shape?.shape}, perimeter = ${shape?.getPerimeter()}"
-        )
+        dumpMsg(shape)
 
         shape = Rectangle(2, 3)
-        log(
-            TAG, "className=${shape.javaClass.canonicalName},shape:${shape.shape}, perimeter = ${shape.getPerimeter()}"
-        )
+        dumpMsg(shape)
 
         shape = Triangle(1, 2, 2)
-        log(
-            TAG, "className=${shape.javaClass.canonicalName},shape:${shape.shape}, perimeter = ${shape.getPerimeter()}"
-        )
+        dumpMsg(shape)
 
         shape = Square(8)
-        log(
-            TAG, "className=${shape.javaClass.canonicalName},shape:${shape.shape}, perimeter = ${shape.getPerimeter()}"
-        )
+        dumpMsg(shape)
 
-        when (shape) {
-            is Rectangle -> log(TAG, "-->width:${shape.width},height:${shape.height}")
-            is Triangle -> log(
-                TAG,
-                "-->length1:${shape.length1},length2:${shape.length2},length3:${shape.length3}"
-            )
-            is Square -> log(TAG, "-->width:${shape.width},height:${shape.height}")
-            else -> {
-                log(TAG, "-->wrong shape type")
-            }
-        }
-
-        testShape(shape)
+//        testShapeAs(shape)
         /*log(
             TAG,
             "className=${shape.javaClass.canonicalName},shape:${testShape?.shape},width:${testShape?.length1}, perimeter = ${testShape?.getPerimeter()}"
@@ -80,18 +58,27 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    private fun testShape(shape: Shape) {
-        val triangle = shape as?Triangle
-        log(
-            TAG,
-            "-->length1:${triangle?.length1},length2:${triangle?.length2},length3:${triangle?.length3}"
-        )
+    private fun testShapeAs(shape: Shape) {
+        log(TAG, "-->testShapeAs()--")
+        dumpMsg(shape)
+        if (shape is Triangle) dumpMsg(shape)
 
-        if (shape is Triangle) {
-            log(
+        val triangle = shape as?Triangle
+        dumpMsg(triangle)
+    }
+
+    private fun dumpMsg(shape: Shape?) {
+        log(TAG, "-->dumpMsg()--class:${shape?.javaClass?.canonicalName}")
+        when (shape) {
+            is Triangle -> log(
                 TAG,
-                "-->length1:${shape.length1},length2:${shape.length2},length3:${shape.length3}"
+                "length1:${shape.length1},length2:${shape.length2},length3:${shape.length3}"
             )
+            is Square -> log(TAG, "-->size:${shape.width}")
+            is Rectangle -> log(TAG, "-->width:${shape.width},height:${shape.height}")
+            else -> {
+                log(TAG, "-->unknown shape type")
+            }
         }
     }
 
