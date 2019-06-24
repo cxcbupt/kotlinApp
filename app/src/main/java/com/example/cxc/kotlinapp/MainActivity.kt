@@ -95,4 +95,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             )
         }
     }
+
+    private fun testString() {
+
+    }
 }
