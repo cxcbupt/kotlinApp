@@ -65,8 +65,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             }
         }
 
-        var customShare = Custom("ccc", 21)
-
+        testShape(shape)
+        /*log(
+            TAG,
+            "className=${shape.javaClass.canonicalName},shape:${testShape?.shape},width:${testShape?.length1}, perimeter = ${testShape?.getPerimeter()}"
+        )*/
 
         /*test()
 
@@ -75,5 +78,21 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         log(TAG, "-->extensionFunc:$extensionFunc")
 
         HelloJava.test()// kotlin call java*/
+    }
+
+
+    private fun testShape(shape: Shape) {
+        val triangle = shape as?Triangle
+        log(
+            TAG,
+            "-->length1:${triangle?.length1},length2:${triangle?.length2},length3:${triangle?.length3}"
+        )
+
+        if (shape is Triangle) {
+            log(
+                TAG,
+                "-->length1:${shape.length1},length2:${shape.length2},length3:${shape.length3}"
+            )
+        }
     }
 }
