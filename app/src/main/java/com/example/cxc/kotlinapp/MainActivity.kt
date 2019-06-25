@@ -20,12 +20,10 @@ class MainActivity : AppCompatActivity() {
     private fun onClick() {
         log(TAG, "hello_tv clicked")
 
-        var txt = hello_tv.text
-        log(TAG, "original text:$txt")
+        log(TAG, "original text:${hello_tv.text}")
 
-        txt = "${txt}_HELLO_"
-        hello_tv.text = txt
-        log(TAG, "new text:$txt")
+        hello_tv.text = "${hello_tv.text}_hello_"
+        log(TAG, "new text:${hello_tv.text}")
 
         var shape: Shape? = Rectangle("rectangle", 2, 3)
         dumpMsg(shape)
@@ -41,6 +39,8 @@ class MainActivity : AppCompatActivity() {
 
         shape = Square(8)
         dumpMsg(shape)
+
+        testString()
 
 //        testShapeAs(shape)
         /*log(
@@ -83,6 +83,22 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun testString() {
+        var str = "fkjava.org"
 
+        for (c in str) {
+            println(c)
+        }
+
+        var str2 = """
+            |测试001
+            |测试002
+            |测试003
+            |测试004
+        """.trimMargin()
+        println(str2)
+
+
+        val s1 = "2.34"
+        println(s1.toIntOrNull())
     }
 }
