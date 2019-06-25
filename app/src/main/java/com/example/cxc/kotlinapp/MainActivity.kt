@@ -25,28 +25,24 @@ class MainActivity : AppCompatActivity() {
         hello_tv.text = "${hello_tv.text}_hello_"
         log(TAG, "new text:${hello_tv.text}")
 
-        var shape: Shape? = Rectangle("rectangle", 2, 3)
-        dumpMsg(shape)
+        /* var shape: Shape? = Rectangle("rectangle", 2, 3)
+         dumpMsg(shape)
 
-        shape = null
-        dumpMsg(shape)
+         shape = null
+         dumpMsg(shape)
 
-        shape = Rectangle(2, 3)
-        dumpMsg(shape)
+         shape = Rectangle(2, 3)
+         dumpMsg(shape)
 
-        shape = Triangle(1, 2, 2)
-        dumpMsg(shape)
+         shape = Triangle(1, 2, 2)
+         dumpMsg(shape)
 
-        shape = Square(8)
-        dumpMsg(shape)
+         shape = Square(8)
+         dumpMsg(shape)*/
 
-        testString()
+//        testString()
 
 //        testShapeAs(shape)
-        /*log(
-            TAG,
-            "className=${shape.javaClass.canonicalName},shape:${testShape?.shape},width:${testShape?.length1}, perimeter = ${testShape?.getPerimeter()}"
-        )*/
 
         /*test()
 
@@ -55,6 +51,8 @@ class MainActivity : AppCompatActivity() {
         log(TAG, "-->extensionFunc:$extensionFunc")
 
         HelloJava.test()// kotlin call java*/
+
+        testArray()
     }
 
 
@@ -100,5 +98,59 @@ class MainActivity : AppCompatActivity() {
 
         val s1 = "2.34"
         println(s1.toIntOrNull())
+    }
+
+    private fun testArray() {
+        var strArray = arrayOf("java", "C++", "C#", "Android")
+        println(strArray.contentToString())
+
+        var intArray = Array(10) { it * it }
+
+        //for-in
+        for (it in intArray) println(it)
+
+        //indices
+        for (index in intArray.indices) println("[$index]:${intArray[index]}")
+
+        //withIndex
+        for ((index, value) in intArray.withIndex()) println("[$index]:$value")
+
+        //util
+        for (index in 0 until intArray.size) println("[$index]:${intArray[index]}")
+        for (index in 0..intArray.lastIndex) println("[$index]:${intArray[index]}")
+
+        //for in with step
+        for (index in 0 until intArray.size step 2) println("[$index]:${intArray[index]}")
+
+        //all
+        println("all <100?${intArray.all { it < 100 }}")
+        println("all > 50?${intArray.all { it > 50 }}")
+
+        //any
+        println("any >100?${intArray.any { it > 100 }}")
+        println("any <50?${intArray.any { it < 100 }}")
+
+        //asList
+        println("asList:${intArray.asList()}")
+
+        //contentToString
+        println("contentToString${intArray.contentToString()}")
+
+        //count
+        println(">50 count:${intArray.count { it > 50 }}")
+
+        //average
+        println("average:${intArray.average()}")
+
+        //drop
+        println("drop(3):${intArray.drop(3)}")
+        println("content to String:${intArray.contentToString()}")
+
+        println("dropLast(3):${intArray.dropLast(3)}")
+        println("content to String:${intArray.contentToString()}")
+
+        //drop while
+        println("dropWhile <50:${intArray.dropWhile { it < 50 }}")
+        println("dropLastWhile >50:${intArray.dropLastWhile { it > 50 }}")
     }
 }
