@@ -1,8 +1,11 @@
 package com.example.cxc.kotlinapp
 
 import android.os.Bundle
+import android.support.constraint.ConstraintSet
 import android.support.v7.app.AppCompatActivity
+import android.transition.TransitionManager
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.key_frame_one.*
 
 class MainActivity : AppCompatActivity() {
     companion object {
@@ -11,10 +14,19 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        log(TAG, "hello kotlin !")
+//        setContentView(R.layout.activity_main)
+//        setContentView(R.layout.activity_main_2)
+        setContentView(R.layout.key_frame_one)
 
-        hello_tv.setOnClickListener { onClick() }
+        button2.setOnClickListener { animateToKeyframeTwo() }
+
+    }
+
+    private fun animateToKeyframeTwo() {
+        val set=ConstraintSet()
+        set.load(this,R.layout.key_frame_two)
+        TransitionManager.beginDelayedTransition(constraint_layout)
+        set.applyTo(constraint_layout)
     }
 
     private fun onClick() {
